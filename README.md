@@ -16,4 +16,7 @@ Train accuracy: 0.9998
 Validation accurace: 0.988    
 
 ======== Pre-defined Embeddings =================================  
-For this approach we will use pre-trained embeddings from here https://nlp.stanford.edu/projects/glove/ (glove.6B.zip)
+For this approach we will use pre-trained embeddings from here https://nlp.stanford.edu/projects/glove/ (glove.6B.zip)  
+Pretrained embedding vector is bigger than for baseline model, so we need more epochs to train it. After 150 eposchs we have:  
+Train accuracy : 0.951  
+Validation accurace: 0.948
