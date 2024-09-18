@@ -19,4 +19,9 @@ Validation accurace: 0.988
 For this approach we will use pre-trained embeddings from here https://nlp.stanford.edu/projects/glove/ (glove.6B.zip)  
 Pretrained embedding vector is bigger than for baseline model, so we need more epochs to train it. After 150 eposchs we have:  
 Train accuracy : 0.951  
-Validation accurace: 0.948
+Validation accurace: 0.948  
+
+========= LSTM model ==========================================  
+Here the simple bidirectional LSTM layer with 3 dense layers. After 20 epochs we have:  
+Train accuracy: 0.9992   
+Validation accurace: 0.987  
