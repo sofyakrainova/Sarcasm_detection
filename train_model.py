@@ -7,6 +7,9 @@ EMBEDDING_DIM = 16
 SHUFFLE_BUFFER_SIZE = 1000
 PREFETCH_BUFFER_SIZE = tf.data.AUTOTUNE
 BATCH_SIZE = 32
+FILTERS = 128
+KERNEL_SIZE = 5
+DENSE_DIM = 6
 EPOCHS = 20
 
 print("Load datasets")
@@ -27,14 +30,16 @@ test_dataset_final = (test_data
                       .batch(BATCH_SIZE)
                       )
 # Build the model
+
 model = tf.keras.Sequential([
     tf.keras.Input(shape=(MAX_LENGTH,)),
-    tf.keras.layers.Embedding(VOCAB_SIZE, EMBEDDING_DIM),
-    tf.keras.layers.GlobalAveragePooling1D(),
-    tf.keras.layers.Dense(64, activation='relu'),
-    tf.keras.layers.Dense(32, activation='relu'),
+    tf.keras.layers.Embedding(input_dim=VOCAB_SIZE, output_dim=EMBEDDING_DIM),
+    tf.keras.layers.Conv1D(FILTERS, KERNEL_SIZE, activation='relu'),
+    tf.keras.layers.GlobalMaxPooling1D(),
+    tf.keras.layers.Dense(DENSE_DIM, activation='relu'),
     tf.keras.layers.Dense(1, activation='sigmoid')
 ])
+
 
 # Print the model summary
 model.summary()
