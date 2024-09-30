@@ -13,9 +13,11 @@ Validation accurace: 0.973
 Test accuracy: 0.970
   
 ======== Convolutional Model ===================================  
-With one 1D convolutional Layer after 20 epochs we have:  
-Train accuracy: 0.9998   
-Validation accurace: 0.988    
+With one 1D convolutional Layer. Parameters tuning gives us the next configuration:  
+Embedding 24, Filters 32, Kernel size 4, Units 8, learning_rate 0.01. After 20 epochs of training we have:  
+Train accuracy: 0.999   
+Validation accurace: 0.987  
+Test accuracy: 0.988  
 
 ======== Pre-defined Embeddings =================================  
 For this approach we will use pre-trained embeddings from here https://nlp.stanford.edu/projects/glove/ (glove.6B.zip)  
