@@ -31,11 +31,12 @@ def model_builder(hp):
   # Choose an optimal value between 8-32
   hp_embed = hp.Int('embedding', min_value=8, max_value=32, step=2)
   model.add(tf.keras.layers.Embedding(VOCAB_SIZE, hp_embed))
-  model.add(tf.keras.layers.GlobalAveragePooling1D())
-  units1 = hp.Int('unit1', min_value=8, max_value=64, step=8)
-  model.add(tf.keras.layers.Dense(units1, activation='relu'))
-  units2 = hp.Int('unit2', min_value=8, max_value=64, step=8)
-  model.add(tf.keras.layers.Dense(units2, activation='relu'))
+  filters = hp.Int('filters', min_value=32, max_value=250, step=32)
+  kernel_size = hp.Int('kernel_size', min_value=2, max_value=8, step=1)
+  model.add(tf.keras.layers.Conv1D(filters, kernel_size, activation='relu'))
+  model.add(tf.keras.layers.GlobalMaxPooling1D())
+  units = hp.Int('units', min_value=2, max_value=12, step=2)
+  model.add(tf.keras.layers.Dense(units, activation='relu'))
   model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
 
   # Tune the learning rate for the optimizer
@@ -64,6 +65,7 @@ print(f"""
 The hyperparameter search is complete.\n
  The optimal embedding dimension is {best_hps.get('embedding')}. \n 
  The optimal learning rate is {best_hps.get('learning_rate')}. \n
- Number units1 {best_hps.get('unit1')} \n
- Number units2 {best_hps.get('unit2')} \n
+ Number units {best_hps.get('units')} \n
+ Kernel size {best_hps.get('kernel_size')} \n
+ Filters number {best_hps.get('filters')} \n
 """)
