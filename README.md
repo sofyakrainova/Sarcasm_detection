@@ -6,9 +6,11 @@ First json files were preprocessed a bit. Imerged them in one and added the root
 {"data":[content of 2 json files]}  
   
 ======= Baseline Model ========================================  
-For the baseline model I have simple 3 layers Dence model and Embedding layer. After 20 epochs we have    
-Train accuracy : 0.987  
-Validation accurace: 0.976 
+For the baseline model I have simple 3 layers Dence model and Embedding layer. Parameters tuning gives us the next configuration:  
+Embedding 12, Units1 24, Units2 16, learning_rate 0.01. After 20 epochs we have    
+Train accuracy : 0.992  
+Validation accurace: 0.973  
+Test accuracy: 0.970
   
 ======== Convolutional Model ===================================  
 With one 1D convolutional Layer after 20 epochs we have:  
