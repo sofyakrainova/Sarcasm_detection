@@ -26,6 +26,9 @@ Train accuracy : 0.951
 Validation accurace: 0.948  
 
 ========= LSTM model ==========================================  
-Here the simple bidirectional LSTM layer with 3 dense layers. After 20 epochs we have:  
-Train accuracy: 0.9992   
-Validation accurace: 0.987  
+Here the simple bidirectional LSTM layer with 3 dense layers. Parameters tuning gives us the next configuration:  
+Embedding 16, lstm units 20, units1 40, Units2 64, learning_rate 0.001.
+After 20 epochs we have:  
+Train accuracy: 0.999   
+Validation accurace: 0.989  
+Test accuracy: 987
