@@ -31,7 +31,9 @@ def model_builder(hp):
   # Choose an optimal value between 8-32
   hp_embed = hp.Int('embedding', min_value=8, max_value=32, step=2)
   model.add(tf.keras.layers.Embedding(VOCAB_SIZE, hp_embed))
-  model.add(tf.keras.layers.GlobalAveragePooling1D())
+  lstm_units = hp.Int('lstm_units', min_value=8, max_value=32, step=4)
+  model.add(tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(lstm_units)))
+  model.add(tf.keras.layers.Dropout(0.3),)
   units1 = hp.Int('unit1', min_value=8, max_value=64, step=8)
   model.add(tf.keras.layers.Dense(units1, activation='relu'))
   units2 = hp.Int('unit2', min_value=8, max_value=64, step=8)
@@ -50,7 +52,7 @@ def model_builder(hp):
 tuner = kt.Hyperband(model_builder,
                      max_epochs=20,
                      objective="val_accuracy",
-                     overwrite=True,
+                     #overwrite=True,
                      directory="tuner_dir",
                      project_name="sarcasm_detection"
                      )
@@ -64,6 +66,7 @@ print(f"""
 The hyperparameter search is complete.\n
  The optimal embedding dimension is {best_hps.get('embedding')}. \n 
  The optimal learning rate is {best_hps.get('learning_rate')}. \n
+ Number lstm_units {best_hps.get('lstm_units')} \n
  Number units1 {best_hps.get('unit1')} \n
  Number units2 {best_hps.get('unit2')} \n
 """)
