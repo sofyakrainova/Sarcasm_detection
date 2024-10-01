@@ -20,10 +20,13 @@ Validation accurace: 0.987
 Test accuracy: 0.988  
 
 ======== Pre-defined Embeddings =================================  
-For this approach we will use pre-trained embeddings from here https://nlp.stanford.edu/projects/glove/ (glove.6B.zip)  
-Pretrained embedding vector is bigger than for baseline model, so we need more epochs to train it. After 150 eposchs we have:  
-Train accuracy : 0.951  
-Validation accurace: 0.948  
+For this approach we will use pre-trained embeddings from here https://nlp.stanford.edu/projects/glove/ (glove.6B.zip)
+Parameters tuning gives us the next configuration:  
+Units1 136, Units2 72, learning_rate 0.001.  
+Pretrained embedding vector is bigger than for baseline model, so we need more epochs to train it. After 200 eposchs we have:  
+Train accuracy : 0.922  
+Validation accurace: 0.923  
+Test accuracy: 0.926  
 
 ========= LSTM model ==========================================  
 Here the simple bidirectional LSTM layer with 3 dense layers. Parameters tuning gives us the next configuration:  
